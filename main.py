@@ -1,17 +1,21 @@
 from rich import print
 from word import randWord, findWord, compare
 
-
-anwser = randWord()
-print(anwser)
-# 记次用的
-Count = 0
-# 输入六次
-for i in range(6):
-    userInput = input("请输入单词:")
-    # 检测长度
-    if len(userInput) != 5 or findWord(userInput) is False:
-        print("请您输入5个字母的英语单词")
+def wordle():
+    answer = randWord()
+    for i in range(6):
+        text = input("输入长度为 5 的单词:")
+        while len(text) != 5 or findWord(text) is False:
+            text = input("输入长度为 5 的单词:")
+        print(compare(answer,text))
+        if answer == text:
+            break
     else:
-        print(compare(anwser, userInput))
-print("垃圾，这都猜不出来，这说明什么，这说明你就是个大混子")
+        print("已经猜了 6 次,没有机会了")
+        print("答案是",answer)
+        return False
+    print("猜对了!")
+    return True
+
+if __name__ == "__main__":
+    wordle()
