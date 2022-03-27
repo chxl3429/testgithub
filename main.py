@@ -1,3 +1,5 @@
+from rich import print
+
 print("begin")
 
 for i in range(10):
