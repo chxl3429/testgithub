@@ -1,4 +1,3 @@
-
 from rich import print
 from word import randWord, findWord, compare
 
